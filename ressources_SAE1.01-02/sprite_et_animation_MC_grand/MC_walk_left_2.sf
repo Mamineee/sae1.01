@@ -1,0 +1,14 @@
+{
+  "textureAtlas": {
+    "texture": "MC_walk_left_2.png",
+    "regionWidth": 96,
+    "regionHeight": 96
+  },
+  "cycles": {
+    "walk_left": {
+      "frames": [5,4,3,2,1,0],
+      "isLooping": false,
+      "frameDuration": 0.2
+    }
+  }
+}

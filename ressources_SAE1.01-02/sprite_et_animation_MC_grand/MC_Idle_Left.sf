@@ -1,0 +1,14 @@
+{
+  "textureAtlas": {
+    "texture": "MC_Idle_Left.png",
+    "regionWidth": 96,
+    "regionHeight": 96
+  },
+  "cycles": {
+    "idle_left": {
+      "frames": [3,2,1,0],
+      "isLooping": false,
+      "frameDuration": 0.2
+    }
+  }
+}

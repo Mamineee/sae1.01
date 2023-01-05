@@ -1,0 +1,14 @@
+{
+  "textureAtlas": {
+    "texture": "GraveRobber_jump_left.png",
+    "regionWidth": 96,
+    "regionHeight": 96
+  },
+  "cycles": {
+    "jump_left": {
+      "frames": [5,4,3,2,1,0],
+      "isLooping": false,
+      "frameDuration": 0.2
+    }
+  }
+}

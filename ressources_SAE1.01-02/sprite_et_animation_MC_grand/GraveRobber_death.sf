@@ -1,0 +1,14 @@
+{
+  "textureAtlas": {
+    "texture": "GraveRobber_death.png",
+    "regionWidth": 96,
+    "regionHeight": 96
+  },
+  "cycles": {
+    "death_right": {
+      "frames": [0,1,2,3,4,5],
+      "isLooping": false,
+      "frameDuration": 0.09999997
+    }
+  }
+}
