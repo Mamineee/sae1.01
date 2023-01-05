@@ -8,6 +8,7 @@ using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.Screens;
+using MonoGame.Extended.Screens.Transitions;
 
 namespace Alex_s_unfortunate_journey
 {
@@ -20,7 +21,7 @@ namespace Alex_s_unfortunate_journey
 
         //sreen
         private niveauDepart _niveauDepart;
-
+        private niveauForet _niveauForet;
         //perso
         private Vector2 _positionPerso;
         private AnimatedSprite _persoIdle;
@@ -51,6 +52,7 @@ namespace Alex_s_unfortunate_journey
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _niveauDepart = new niveauDepart(this);
+            _niveauForet = new niveauForet(this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -59,16 +61,24 @@ namespace Alex_s_unfortunate_journey
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+            KeyboardState keyboardState = Keyboard.GetState();
             // TODO: Add your update logic here
 
+            if (keyboardState.IsKeyDown(Keys.Left))
+            {
+                _screenManager.LoadScreen(_niveauForet);
+            }
+            else if (keyboardState.IsKeyDown(Keys.Right))
+            {
+                _screenManager.LoadScreen(_niveauDepart);
+            }
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
-            _screenManager.LoadScreen(_niveauDepart);
+            //_screenManager.LoadScreen(_niveauDepart);
             //perso
             //_spriteBatch.Begin();
             //_spriteBatch.Draw(_persoIdle, _positionPerso);
