@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="75" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
  <tileset firstgid="1" name="zone de depart_scaled_12x_pngcrushed" tilewidth="16" tileheight="16" tilecount="3600" columns="75">
-  <image source="zone de depart_scaled_12x_pngcrushed.png" width="1200" height="768"/>
+  <image source="zone_de_depart_scaled_12x_pngcrushed.png" width="1200" height="768"/>
  </tileset>
  <layer id="1" name="Calque de Tuiles 1" width="75" height="48">
   <data encoding="csv">
