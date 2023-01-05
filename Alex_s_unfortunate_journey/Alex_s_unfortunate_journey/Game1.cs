@@ -70,9 +70,9 @@ namespace Alex_s_unfortunate_journey
             //map
             _tiledMapRenderer.Draw();
             //perso
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(_persoIdle, _positionPerso);
-            _spriteBatch.End();
+            //_spriteBatch.Begin();
+            //_spriteBatch.Draw(_persoIdle, _positionPerso);
+            //_spriteBatch.End();
             base.Draw(gameTime);
         }
     }
