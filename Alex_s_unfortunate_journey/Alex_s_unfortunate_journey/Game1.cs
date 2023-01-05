@@ -22,6 +22,7 @@ namespace Alex_s_unfortunate_journey
         //sreen
         private niveauDepart _niveauDepart;
         private niveauForet _niveauForet;
+        //private Menu
         //perso
         private Vector2 _positionPerso;
         private AnimatedSprite _persoIdle;
@@ -68,9 +69,13 @@ namespace Alex_s_unfortunate_journey
             {
                 _screenManager.LoadScreen(_niveauForet);
             }
-            else if (keyboardState.IsKeyDown(Keys.Right))
+            if (keyboardState.IsKeyDown(Keys.Right))
             {
                 _screenManager.LoadScreen(_niveauDepart);
+            }
+            if (keyboardState.IsKeyDown(Keys.Up))
+            {
+                System.Console.WriteLine("Up");
             }
             base.Update(gameTime);
         }
