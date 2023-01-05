@@ -18,3 +18,20 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../ressources_SAE1.01-02/niveauDepart/niveauDepart2.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:../../../ressources_SAE1.01-02/niveauDepart/niveauDepart2.tmx;niveauDepart2.tmx
+
+#begin zone_de_depart_scaled_12x_pngcrushed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zone_de_depart_scaled_12x_pngcrushed.png
+
