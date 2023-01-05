@@ -7,17 +7,19 @@ using MonoGame.Extended.Content;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
-
+using MonoGame.Extended.Screens;
 
 namespace Alex_s_unfortunate_journey
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
+        public SpriteBatch SpriteBatch { get; set; }       
         private SpriteBatch _spriteBatch;
-        //map
-        private TiledMap _tiledMap;
-        private TiledMapRenderer _tiledMapRenderer;
+        private readonly ScreenManager _screenManager;
+
+        //sreen
+        private niveauDepart _niveauDepart;
 
         //perso
         private Vector2 _positionPerso;
@@ -25,6 +27,8 @@ namespace Alex_s_unfortunate_journey
 
         public Game1()
         {
+            _screenManager = new ScreenManager();
+            Components.Add(_screenManager);
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -33,6 +37,7 @@ namespace Alex_s_unfortunate_journey
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+           
             //map
             GraphicsDevice.BlendState = BlendState.AlphaBlend;
             _graphics.PreferredBackBufferWidth = 1200;
@@ -45,9 +50,7 @@ namespace Alex_s_unfortunate_journey
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            //map
-            _tiledMap = Content.Load<TiledMap>("niveauDepart2");
-            _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            _niveauDepart = new niveauDepart(this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -56,8 +59,7 @@ namespace Alex_s_unfortunate_journey
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //map
-            _tiledMapRenderer.Update(gameTime);
+            
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -66,9 +68,7 @@ namespace Alex_s_unfortunate_journey
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            //map
-            _tiledMapRenderer.Draw();
+            _screenManager.LoadScreen(_niveauDepart);
             //perso
             //_spriteBatch.Begin();
             //_spriteBatch.Draw(_persoIdle, _positionPerso);
