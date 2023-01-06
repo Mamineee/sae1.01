@@ -21,7 +21,7 @@ namespace Alex_s_unfortunate_journey
         //alex
      
         private Vector2 _alexPosition;
-        private MonoGame.Extended.Animations.AnimatedSprite _idle;
+        private MonoGame.Extended.Sprites.AnimatedSprite _idle;
         //menu
         public bool MenuReouvert = false;
 
@@ -37,6 +37,7 @@ namespace Alex_s_unfortunate_journey
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //alex
             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
+            _idle = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
             base.LoadContent();
         }
         public override void Initialize()
