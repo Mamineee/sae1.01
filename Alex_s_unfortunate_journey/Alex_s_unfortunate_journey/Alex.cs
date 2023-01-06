@@ -43,18 +43,18 @@ namespace Alex_s_unfortunate_journey
             
         }
 
-        public void Update(GameTime gameTime, Vector2 theSpeed, Vector2 theDirection)
-        {
-            _positionPerso += theDirection * theSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
+        //public void Update(GameTime gameTime, Vector2 theSpeed, Vector2 theDirection)
+        //{
+        //    _positionPerso += theDirection * theSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        //}
         public void Update(GameTime theGameTime)
         {
-            KeyboardState aCurrentKeyboardState = Keyboard.GetState();
+            KeyboardState etatClavier = Keyboard.GetState();
 
-            UpdateMovement(aCurrentKeyboardState);
-            UpdateJump(aCurrentKeyboardState);
+            UpdateMovement(etatClavier);
+            UpdateJump(etatClavier);
 
-            ancienEtatClavier = aCurrentKeyboardState;
+            ancienEtatClavier = etatClavier;
         }
 
         private void UpdateMovement(KeyboardState aCurrentKeyboardState)
