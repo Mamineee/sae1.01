@@ -19,6 +19,7 @@ namespace Alex_s_unfortunate_journey
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
 
+
         public Menu(Game1 game) : base(game)
         {
             _myGame = game;
@@ -40,6 +41,7 @@ namespace Alex_s_unfortunate_journey
             _myGame.GraphicsDevice.Clear(Color.Red);
             //map
             //_tiledMapRenderer.Draw();
+            
         }
     }
 
