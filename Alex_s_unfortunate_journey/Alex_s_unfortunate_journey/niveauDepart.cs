@@ -18,7 +18,8 @@ namespace Alex_s_unfortunate_journey
         //map
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
-        
+
+        public bool MenuReouvert = false;
         public niveauDepart(Game1 game) : base(game)
         {
             _myGame = game;
@@ -32,6 +33,8 @@ namespace Alex_s_unfortunate_journey
         }
         public override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Back))
+                _myGame.Etat = Game1.Etats.Menu;
             //map
             _tiledMapRenderer.Update(gameTime);
         }

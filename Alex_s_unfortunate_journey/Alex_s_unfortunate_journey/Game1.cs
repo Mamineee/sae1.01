@@ -116,15 +116,20 @@ namespace Alex_s_unfortunate_journey
                     Exit();
 
                 else if (this.Etat == Etats.Play && _menu.DejaJouer == false)
+                {
                     _screenManager.LoadScreen(_niveauDepart, new FadeTransition(GraphicsDevice, Color.Black));
+                    _menu.DejaJouer = true;
+                    _niveauDepart.MenuReouvert = false;
+                }
             }
 
-            if (keyboardState.IsKeyDown(Keys.Back))
+            if (keyboardState.IsKeyDown(Keys.Back)&& _niveauDepart.MenuReouvert == false)
             {
                 if (this.Etat == Etats.Menu)
                 {
                     _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
-                    _menu.DejaJouer = true;
+                    _niveauDepart.MenuReouvert = true;
+                    _menu.DejaJouer = false;
                 }
             }
             base.Update(gameTime);

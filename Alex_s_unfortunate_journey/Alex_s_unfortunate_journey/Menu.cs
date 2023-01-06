@@ -49,7 +49,6 @@ namespace Alex_s_unfortunate_journey
                         if (i == 0)
                         {
                             _myGame.Etat = Game1.Etats.Play;
-                            DejaJouer = false;
                         }
                         else if (i == 1)
                             _myGame.Etat = Game1.Etats.Quit;
