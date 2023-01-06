@@ -94,27 +94,30 @@ namespace Alex_s_unfortunate_journey
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
             // TODO: Add your update logic here
-
+            //aler sur niveau foret
             if (keyboardState.IsKeyDown(Keys.Left))
             {
                 _screenManager.LoadScreen(_niveauForet);
             }
+            //aller sur niveau depart
             if (keyboardState.IsKeyDown(Keys.Right))
             {
                 _screenManager.LoadScreen(_niveauDepart);
             }
+            //affiche up sur la console
             if (keyboardState.IsKeyDown(Keys.Up))
             {
                 System.Console.WriteLine("Up");
             }
-            
+            //detection touche gauche de la sourie
             MouseState _mouseState = Mouse.GetState();
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
                 // Attention, l'état a été mis à jour directement par l'écran en question
+                //si on appuie sur le bouton quitter -> quitte le jeu
                 if (this.Etat == Etats.Quit)
                     Exit();
-
+                //si on appuie sur le bouton jouer -> commence le jeu
                 else if (this.Etat == Etats.Play && _menu.DejaJouer == false)
                 {
                     _screenManager.LoadScreen(_niveauDepart, new FadeTransition(GraphicsDevice, Color.Black));
@@ -122,7 +125,7 @@ namespace Alex_s_unfortunate_journey
                     _niveauDepart.MenuReouvert = false;
                 }
             }
-
+            //
             if (keyboardState.IsKeyDown(Keys.Back)&& _niveauDepart.MenuReouvert == false)
             {
                 if (this.Etat == Etats.Menu)
