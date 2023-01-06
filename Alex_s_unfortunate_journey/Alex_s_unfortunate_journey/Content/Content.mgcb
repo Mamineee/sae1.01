@@ -31,6 +31,42 @@
 /processorParam:TextureFormat=Color
 /build:GraveRobber_idle.png
 
+#begin GraveRobber_walk.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GraveRobber_walk.png
+
+#begin MC_Idle_Left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MC_Idle_Left.png
+
+#begin MC_walk_left_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MC_walk_left_2.png
+
 #begin menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,11 +84,6 @@
 /processor:TiledMapProcessor
 /build:niveauDepart2.tmx
 
-#begin niveauForet.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:niveauForet.tmx
-
 #begin niveauForet_scaled_12x_pngcrushed.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -64,6 +95,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:niveauForet_scaled_12x_pngcrushed.png
+
+#begin niveauForet.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:niveauForet.tmx
 
 #begin zone_de_depart_scaled_12x_pngcrushed.png
 /importer:TextureImporter

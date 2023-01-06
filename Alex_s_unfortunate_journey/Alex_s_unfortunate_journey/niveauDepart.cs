@@ -36,21 +36,10 @@ namespace Alex_s_unfortunate_journey
             _tiledMap = Content.Load<TiledMap>("niveauDepart2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //alex
+
             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
-            alex = new Alex(spriteSheetIdle,2);
-            
-            if (direction == Vector2.Zero)
-            {
-                alex.PlayAnimation("idle");
-            }
-            if (direction > Vector2.Zero)
-            {
-
-            }
-            if (direction < Vector2.Zero)
-            {
-
-            }
+            alex = new Alex(spriteSheetIdle, 2);
+            alex.PlayAnimation("idle");
             base.LoadContent();
         }
         public override void Initialize()
@@ -77,13 +66,51 @@ namespace Alex_s_unfortunate_journey
                 if (etatClavier.IsKeyDown(Keys.Q) == true)
                 {
                     direction = new Vector2(-1, 0);
+                    if (!alex.etatAnimation.Equals("walk_left"))
+                    {
+                        SpriteSheet spriteSheetWalk = Content.Load<SpriteSheet>("MC_walk_left_2.sf", new JsonContentLoader());
+                        alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetWalk);
+                        alex.PlayAnimation("walk_left");
+                        alex.etatAnimation = "walk_left";
+                        alex.directionRight = false;
+                    }
                 }
                 else if (etatClavier.IsKeyDown(Keys.D) == true)
                 { 
                     direction = new Vector2(1, 0);
+                    if (!alex.etatAnimation.Equals("walk_right"))
+                    {
+                        SpriteSheet spriteSheetWalk = Content.Load<SpriteSheet>("GraveRobber_walk.sf", new JsonContentLoader());
+                        alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetWalk);
+                        alex.PlayAnimation("walk_right");
+                        alex.etatAnimation = "walk_right";
+                        alex.directionRight = true;
+                    }
+                }
+                else
+                {
+                    direction = Vector2.Zero;
+                    if (!alex.etatAnimation.Equals("idle"))
+                    {
+                        if(alex.directionRight)
+                        {
+                            SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
+                            alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
+                            alex.PlayAnimation("idle");
+                            alex.etatAnimation = "idle";
+                        }
+                        else
+                        {
+                            SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("MC_Idle_Left.sf", new JsonContentLoader());
+                            alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
+                            alex.PlayAnimation("idle_left");
+                            alex.etatAnimation = "idle";
+                        }
+                    }
                 }
                 alex.Movement(direction,deltaSeconds);
             }
+
 
         }
         public override void Draw(GameTime gameTime)
