@@ -19,33 +19,33 @@ namespace Alex_s_unfortunate_journey
         private Vector2 _positionPerso =new Vector2(0, 0); 
         const int _startPositionX = 125;
         const int _startPositionY = 245;
-        const int _playerSpeed = 160;
-        const int _moveUp = -1;
-        const int _moveDown = 1;
-        const int _moveLeft = -1;
-        const int _moveRight = 1;
+        const int _vitesse = 160;
+        const int _haut = -1;
+        const int _bas = 1;
+        const int _gauche = -1;
+        const int _droite = 1;
 
-        enum State
+        enum Etats
         {
-            Walking,
-            Jumping
+            Walk,
+            Jump
         }
-        State mCurrentState = State.Walking;
+        Etats etat = Etats.Walk;
 
-        Vector2 mDirection = Vector2.Zero;
-        Vector2 mSpeed = Vector2.Zero;
+        Vector2 direction = Vector2.Zero;
+        Vector2 vitesse = Vector2.Zero;
 
-        KeyboardState mPreviousKeyboardState;
+        KeyboardState ancienEtatClavier;
 
-        Vector2 mStartingPosition = Vector2.Zero;
-        public void LoadContent(ContentManager theContentManager)
+        Vector2 positionDepart = Vector2.Zero;
+        public void LoadContent()
         {
             
         }
 
-        public void Update(GameTime theGameTime, Vector2 theSpeed, Vector2 theDirection)
+        public void Update(GameTime gameTime, Vector2 theSpeed, Vector2 theDirection)
         {
-            _positionPerso += theDirection * theSpeed * (float)theGameTime.ElapsedGameTime.TotalSeconds;
+            _positionPerso += theDirection * theSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         public void Update(GameTime theGameTime)
         {
@@ -54,63 +54,63 @@ namespace Alex_s_unfortunate_journey
             UpdateMovement(aCurrentKeyboardState);
             UpdateJump(aCurrentKeyboardState);
 
-            mPreviousKeyboardState = aCurrentKeyboardState;
+            ancienEtatClavier = aCurrentKeyboardState;
         }
 
         private void UpdateMovement(KeyboardState aCurrentKeyboardState)
         {
-            if (mCurrentState == State.Walking)
+            if (etat == Etats.Walk)
             {
-                mSpeed = Vector2.Zero;
-                mDirection = Vector2.Zero;
+                vitesse = Vector2.Zero;
+                direction = Vector2.Zero;
 
                 if (aCurrentKeyboardState.IsKeyDown(Keys.Q) == true)
                 {
-                    mSpeed.X = _playerSpeed;
-                    mDirection.X = _moveLeft;
+                    vitesse.X = _vitesse;
+                    direction.X = _gauche;
                 }
                 else if (aCurrentKeyboardState.IsKeyDown(Keys.D) == true)
                 {
-                    mSpeed.X = _playerSpeed;
-                    mDirection.X = _moveRight;
+                    vitesse.X = _vitesse;
+                    direction.X = _droite;
                 }
             }
         }
 
         private void UpdateJump(KeyboardState aCurrentKeyboardState)
         {
-            if (mCurrentState == State.Walking)
+            if (etat == Etats.Walk)
             {
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Space) == true && mPreviousKeyboardState.IsKeyDown(Keys.Space) == false)
+                if (aCurrentKeyboardState.IsKeyDown(Keys.Space) == true && ancienEtatClavier.IsKeyDown(Keys.Space) == false)
                 {
                     Jump();
                 }
             }
 
-            if (mCurrentState == State.Jumping)
+            if (etat == Etats.Jump)
             {
-                if (mStartingPosition.Y - _positionPerso.Y > 150)
+                if (positionDepart.Y - _positionPerso.Y > 150)
                 {
-                    mDirection.Y = _moveDown;
+                    direction.Y = _bas;
                 }
 
-                if (_positionPerso.Y > mStartingPosition.Y)
+                if (_positionPerso.Y > positionDepart.Y)
                 {
-                    _positionPerso.Y = mStartingPosition.Y;
-                    mCurrentState = State.Walking;
-                    mDirection = Vector2.Zero;
+                    _positionPerso.Y = positionDepart.Y;
+                    etat = Etats.Walk;
+                    direction = Vector2.Zero;
                 }
             }
         }
 
         private void Jump()
         {
-            if (mCurrentState != State.Jumping)
+            if (etat != Etats.Jump)
             {
-                mCurrentState = State.Jumping;
-                mStartingPosition = _positionPerso;
-                mDirection.Y = _moveUp;
-                mSpeed = new Vector2(_playerSpeed, _playerSpeed);
+                etat = Etats.Jump;
+                positionDepart = _positionPerso;
+                direction.Y = _haut;
+                vitesse = new Vector2(_vitesse, _vitesse);
             }
         }
 
