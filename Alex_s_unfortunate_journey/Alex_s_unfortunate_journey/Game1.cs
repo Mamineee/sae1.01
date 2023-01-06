@@ -22,11 +22,26 @@ namespace Alex_s_unfortunate_journey
         //sreen
         private niveauDepart _niveauDepart;
         private niveauForet _niveauForet;
-        //private Menu
+        private Menu _menu;        
         //perso
         private Vector2 _positionPerso;
         private AnimatedSprite _persoIdle;
+        //etat
+        public enum Etats { Menu, Controls, Play, Quit };
+        private Etats etat;
 
+        public Etats Etat
+        {
+            get
+            {
+                return this.etat;
+            }
+
+            set
+            {
+                this.etat = value;
+            }
+        }
         public Game1()
         {
             _screenManager = new ScreenManager();
@@ -54,12 +69,15 @@ namespace Alex_s_unfortunate_journey
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _niveauDepart = new niveauDepart(this);
             _niveauForet = new niveauForet(this);
+            _menu = new Menu(this);
+            _screenManager.LoadScreen(_menu);
+
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed /*|| Keyboard.GetState().IsKeyDown(Keys.Escape)*/)
                 Exit();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
@@ -76,6 +94,24 @@ namespace Alex_s_unfortunate_journey
             if (keyboardState.IsKeyDown(Keys.Up))
             {
                 System.Console.WriteLine("Up");
+            }
+            
+            MouseState _mouseState = Mouse.GetState();
+            if (_mouseState.LeftButton == ButtonState.Pressed)
+            {
+                // Attention, l'état a été mis à jour directement par l'écran en question
+                if (this.Etat == Etats.Quit)
+                    Exit();
+
+                else if (this.Etat == Etats.Play)
+                    _screenManager.LoadScreen(_niveauDepart, new FadeTransition(GraphicsDevice, Color.Black));
+
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                if (this.Etat == Etats.Menu)
+                    _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
             }
             base.Update(gameTime);
         }
