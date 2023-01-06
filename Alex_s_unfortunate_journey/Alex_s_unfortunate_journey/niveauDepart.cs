@@ -40,7 +40,10 @@ namespace Alex_s_unfortunate_journey
             //_myGame.GraphicsDevice.Clear(Color.Red);
             //map
             _tiledMapRenderer.Draw();
-            
+
+            _myGame.SpriteBatch.Begin();
+
+            _myGame.SpriteBatch.End();
         }
     }
     

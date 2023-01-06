@@ -60,6 +60,7 @@ namespace Alex_s_unfortunate_journey
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            
         }
 
         protected override void Initialize()
@@ -71,7 +72,7 @@ namespace Alex_s_unfortunate_journey
             _graphics.PreferredBackBufferWidth = 1200;
             _graphics.PreferredBackBufferHeight = 768;
             _graphics.ApplyChanges();
-
+            Etat = Etats.Menu;
             base.Initialize();
         }
 
@@ -114,15 +115,17 @@ namespace Alex_s_unfortunate_journey
                 if (this.Etat == Etats.Quit)
                     Exit();
 
-                else if (this.Etat == Etats.Play)
+                else if (this.Etat == Etats.Play && _menu.DejaJouer == false)
                     _screenManager.LoadScreen(_niveauDepart, new FadeTransition(GraphicsDevice, Color.Black));
-
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (keyboardState.IsKeyDown(Keys.Back))
             {
                 if (this.Etat == Etats.Menu)
+                {
                     _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+                    _menu.DejaJouer = true;
+                }
             }
             base.Update(gameTime);
         }

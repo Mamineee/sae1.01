@@ -19,13 +19,14 @@ namespace Alex_s_unfortunate_journey
         private Texture2D _imageMenu;
         //boutons
         private Rectangle[] lesBoutons;
-
+        public bool DejaJouer = false;
         public Menu(Game1 game) : base(game)
         {
             _myGame = game;
             lesBoutons = new Rectangle[2];
-            lesBoutons[0] = new Rectangle(75, 110, 640, 160);
-            lesBoutons[1] = new Rectangle(75, 320, 640, 160);
+            lesBoutons[0] = new Rectangle(420, 395, 360, 100);
+            lesBoutons[1] = new Rectangle(420, 525, 360, 100);
+
         }
         public override void LoadContent()
         {
@@ -35,6 +36,29 @@ namespace Alex_s_unfortunate_journey
         }
         public override void Update(GameTime gameTime)
         {
+
+            MouseState _mouseState = Mouse.GetState();
+            if (_mouseState.LeftButton == ButtonState.Pressed)
+            {
+                for (int i = 0; i < lesBoutons.Length; i++)
+                {
+                    // si le clic correspond à un des 3 boutons
+                    if (lesBoutons[i].Contains(Mouse.GetState().X, Mouse.GetState().Y))
+                    {
+                        // on change l'état défini dans Game1 en fonction du bouton cliqué
+                        if (i == 0)
+                        {
+                            _myGame.Etat = Game1.Etats.Play;
+                            DejaJouer = false;
+                        }
+                        else if (i == 1)
+                            _myGame.Etat = Game1.Etats.Quit;
+                        break;
+                    }
+                    
+                }
+                //DejaJouer = true;
+            }
             //map
             //_tiledMapRenderer.Update(gameTime);
         }
