@@ -43,39 +43,39 @@ namespace Alex_s_unfortunate_journey
             
         }
 
-        public void Update(GameTime __gameTime, Vector2 __vitesse, Vector2 __direction)
-        {
-            _positionAlex += __direction * __vitesse * (float)__gameTime.ElapsedGameTime.TotalSeconds;
-        }
+        //public void Update(GameTime __gameTime, Vector2 __vitesse, Vector2 __direction)
+        //{
+        //    _positionAlex += __direction * __vitesse * (float)__gameTime.ElapsedGameTime.TotalSeconds;
+        //}
         public void Update(GameTime gameTime)
         {
             KeyboardState etatClavier = Keyboard.GetState();
 
-            UpdateMovement(etatClavier);
+            //UpdateMovement(etatClavier);
             UpdateJump(etatClavier);
 
             ancienEtatClavier = etatClavier;
         }
 
-        private void UpdateMovement(KeyboardState etatClavier)
-        {
-            if (etat == Etats.Walk)
-            {
-                vitesse = Vector2.Zero;
-                direction = Vector2.Zero;
+        //private void UpdateMovement(KeyboardState etatClavier)
+        //{
+        //    if (etat == Etats.Walk)
+        //    {
+        //        vitesse = Vector2.Zero;
+        //        direction = Vector2.Zero;
 
-                if (etatClavier.IsKeyDown(Keys.Q) == true)
-                {
-                    vitesse.X = _vitesse;
-                    direction.X = _gauche;
-                }
-                else if (etatClavier.IsKeyDown(Keys.D) == true)
-                {
-                    vitesse.X = _vitesse;
-                    direction.X = _droite;
-                }
-            }
-        }
+        //        if (etatClavier.IsKeyDown(Keys.Q) == true)
+        //        {
+        //            vitesse.X = _vitesse;
+        //            direction.X = _gauche;
+        //        }
+        //        else if (etatClavier.IsKeyDown(Keys.D) == true)
+        //        {
+        //            vitesse.X = _vitesse;
+        //            direction.X = _droite;
+        //        }
+        //    }
+        //}
 
         private void UpdateJump(KeyboardState etatClavier)
         {

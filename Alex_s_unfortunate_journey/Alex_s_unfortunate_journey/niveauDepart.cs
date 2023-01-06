@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-//using MonoGame.Extended.Animations;
+using MonoGame.Extended.Animations;
 using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Sprites;
@@ -18,18 +18,29 @@ namespace Alex_s_unfortunate_journey
         //map
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
-
+        //alex
+     
+        private Vector2 _alexPosition;
+        private MonoGame.Extended.Animations.AnimatedSprite _idle;
+        //menu
         public bool MenuReouvert = false;
         public niveauDepart(Game1 game) : base(game)
         {
             _myGame = game;
+
         }
         public override void LoadContent()
         {
             //map
             _tiledMap = Content.Load<TiledMap>("niveauDepart2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
             base.LoadContent();
+        }
+        public override void Initialize()
+        {
+            _alexPosition = new Vector2(304, 624);
+            base.Initialize();
         }
         public override void Update(GameTime gameTime)
         {
@@ -45,7 +56,7 @@ namespace Alex_s_unfortunate_journey
             _tiledMapRenderer.Draw();
 
             _myGame.SpriteBatch.Begin();
-
+            _myGame.SpriteBatch.Draw(_idle, _alexPosition);
             _myGame.SpriteBatch.End();
         }
     }

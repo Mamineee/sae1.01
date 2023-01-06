@@ -30,7 +30,7 @@ namespace Alex_s_unfortunate_journey
         private SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
 
-        //sreen
+        //screen
         private niveauDepart _niveauDepart;
         private niveauForet _niveauForet;
         private Menu _menu;        
@@ -138,11 +138,7 @@ namespace Alex_s_unfortunate_journey
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
-            //_screenManager.LoadScreen(_niveauDepart);
-            //perso
-            //_spriteBatch.Begin();
-            //_spriteBatch.Draw(_persoIdle, _positionPerso);
-            //_spriteBatch.End();
+            
             base.Draw(gameTime);
         }
     }
