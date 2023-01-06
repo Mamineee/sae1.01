@@ -15,7 +15,18 @@ namespace Alex_s_unfortunate_journey
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        public SpriteBatch SpriteBatch { get; set; }       
+        public SpriteBatch SpriteBatch
+        {
+            get
+            {
+                return this._spriteBatch;
+            }
+
+            set
+            {
+                this._spriteBatch = value;
+            }
+        }
         private SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
 

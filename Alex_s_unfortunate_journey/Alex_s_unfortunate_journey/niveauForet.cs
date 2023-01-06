@@ -37,7 +37,7 @@ namespace Alex_s_unfortunate_journey
         }
         public override void Draw(GameTime gameTime)
         {
-            _myGame.GraphicsDevice.Clear(Color.Red);
+            //_myGame.GraphicsDevice.Clear(Color.Red);
             //map
             _tiledMapRenderer.Draw();
             
