@@ -63,7 +63,6 @@ namespace Alex_s_unfortunate_journey
             {
                 mSpeed = Vector2.Zero;
                 mDirection = Vector2.Zero;
-                _action = "idle";
 
                 if (aCurrentKeyboardState.IsKeyDown(Keys.Q) == true)
                 {
