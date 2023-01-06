@@ -16,7 +16,7 @@ namespace Alex_s_unfortunate_journey
     {
         private AnimatedSprite _animation;
         private string _action;
-        private Vector2 _positionPerso =new Vector2(0, 0); 
+        private Vector2 _positionAlex =new Vector2(0, 0); 
         const int _startPositionX = 125;
         const int _startPositionY = 245;
         const int _vitesse = 160;
@@ -43,11 +43,11 @@ namespace Alex_s_unfortunate_journey
             
         }
 
-        //public void Update(GameTime gameTime, Vector2 theSpeed, Vector2 theDirection)
-        //{
-        //    _positionPerso += theDirection * theSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        //}
-        public void Update(GameTime theGameTime)
+        public void Update(GameTime __gameTime, Vector2 __vitesse, Vector2 __direction)
+        {
+            _positionAlex += __direction * __vitesse * (float)__gameTime.ElapsedGameTime.TotalSeconds;
+        }
+        public void Update(GameTime gameTime)
         {
             KeyboardState etatClavier = Keyboard.GetState();
 
@@ -57,19 +57,19 @@ namespace Alex_s_unfortunate_journey
             ancienEtatClavier = etatClavier;
         }
 
-        private void UpdateMovement(KeyboardState aCurrentKeyboardState)
+        private void UpdateMovement(KeyboardState etatClavier)
         {
             if (etat == Etats.Walk)
             {
                 vitesse = Vector2.Zero;
                 direction = Vector2.Zero;
 
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Q) == true)
+                if (etatClavier.IsKeyDown(Keys.Q) == true)
                 {
                     vitesse.X = _vitesse;
                     direction.X = _gauche;
                 }
-                else if (aCurrentKeyboardState.IsKeyDown(Keys.D) == true)
+                else if (etatClavier.IsKeyDown(Keys.D) == true)
                 {
                     vitesse.X = _vitesse;
                     direction.X = _droite;
@@ -77,11 +77,11 @@ namespace Alex_s_unfortunate_journey
             }
         }
 
-        private void UpdateJump(KeyboardState aCurrentKeyboardState)
+        private void UpdateJump(KeyboardState etatClavier)
         {
             if (etat == Etats.Walk)
             {
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Space) == true && ancienEtatClavier.IsKeyDown(Keys.Space) == false)
+                if (etatClavier.IsKeyDown(Keys.Space) == true && ancienEtatClavier.IsKeyDown(Keys.Space) == false)
                 {
                     Jump();
                 }
@@ -89,14 +89,14 @@ namespace Alex_s_unfortunate_journey
 
             if (etat == Etats.Jump)
             {
-                if (positionDepart.Y - _positionPerso.Y > 150)
+                if (positionDepart.Y - _positionAlex.Y > 150)
                 {
                     direction.Y = _bas;
                 }
 
-                if (_positionPerso.Y > positionDepart.Y)
+                if (_positionAlex.Y > positionDepart.Y)
                 {
-                    _positionPerso.Y = positionDepart.Y;
+                    _positionAlex.Y = positionDepart.Y;
                     etat = Etats.Walk;
                     direction = Vector2.Zero;
                 }
@@ -108,7 +108,7 @@ namespace Alex_s_unfortunate_journey
             if (etat != Etats.Jump)
             {
                 etat = Etats.Jump;
-                positionDepart = _positionPerso;
+                positionDepart = _positionAlex;
                 direction.Y = _haut;
                 vitesse = new Vector2(_vitesse, _vitesse);
             }
