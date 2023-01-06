@@ -31,7 +31,7 @@ namespace Alex_s_unfortunate_journey
         public override void LoadContent()
         {
             //map
-            _imageMenu = Content.Load<Texture2D>("Menu (3)_scaled_12x_pngcrushed");
+            _imageMenu = Content.Load<Texture2D>("menu");
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

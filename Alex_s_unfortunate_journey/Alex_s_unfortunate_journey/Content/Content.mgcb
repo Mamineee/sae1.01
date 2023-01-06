@@ -30,7 +30,7 @@
 /processorParam:TextureFormat=Color
 /build:GraveRobber_idle.png
 
-#begin Menu (3)_scaled_12x_pngcrushed.png
+#begin menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -40,7 +40,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Menu (3)_scaled_12x_pngcrushed.png
+/build:menu.png
 
 #begin niveauDepart2.tmx
 /importer:TiledMapImporter
