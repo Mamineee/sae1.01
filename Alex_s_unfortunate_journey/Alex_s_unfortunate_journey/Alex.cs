@@ -65,12 +65,12 @@ namespace Alex_s_unfortunate_journey
                 mDirection = Vector2.Zero;
                 _action = "idle";
 
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Left) == true)
+                if (aCurrentKeyboardState.IsKeyDown(Keys.Q) == true)
                 {
                     mSpeed.X = _playerSpeed;
                     mDirection.X = _moveLeft;
                 }
-                else if (aCurrentKeyboardState.IsKeyDown(Keys.Right) == true)
+                else if (aCurrentKeyboardState.IsKeyDown(Keys.D) == true)
                 {
                     mSpeed.X = _playerSpeed;
                     mDirection.X = _moveRight;
