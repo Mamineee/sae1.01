@@ -15,7 +15,7 @@ namespace Alex_s_unfortunate_journey
     public class Alex
     {
         public MonoGame.Extended.Sprites.AnimatedSprite _animation;
-        private string _action;
+        //private string _action;
         public Vector2 _positionAlex;
         public String etatAnimation;
         public Boolean directionRight;
@@ -39,10 +39,10 @@ namespace Alex_s_unfortunate_journey
 
         Vector2 positionDepart = Vector2.Zero;
 
-        public Alex(SpriteSheet spritesheet,float vitesse)
+        public Alex(SpriteSheet spritesheet,float vitesse, Vector2 initialPos)
         {
             _animation = new MonoGame.Extended.Sprites.AnimatedSprite(spritesheet);
-            _positionAlex = new Vector2(304, 624);
+            _positionAlex = initialPos;
             etatAnimation = "idle";
             directionRight = true;
         }

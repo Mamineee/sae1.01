@@ -24,28 +24,30 @@ namespace Alex_s_unfortunate_journey
         //menu
         public bool MenuReouvert = false;
         Alex alex;
+        public Vector2 positionDepart;
+
 
         public niveauDepart(Game1 game) : base(game)
         {
             _myGame = game;
-
+            positionDepart = new Vector2(330, 610);
         }
         public override void LoadContent()
         {
             //map
             _tiledMap = Content.Load<TiledMap>("niveauDepart2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            //alex
 
+            //alex 
+            //animation de base
             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
-            alex = new Alex(spriteSheetIdle, 2);
+            alex = new Alex(spriteSheetIdle, 2, positionDepart);
             alex.PlayAnimation("idle");
             base.LoadContent();
         }
         public override void Initialize()
         {
-            //alex
-            
+           
             base.Initialize();
         }
         public override void Update(GameTime gameTime)
@@ -65,6 +67,7 @@ namespace Alex_s_unfortunate_journey
 
                 if (etatClavier.IsKeyDown(Keys.Q) == true)
                 {
+                    //marche vers la gauche
                     direction = new Vector2(-1, 0);
                     if (!alex.etatAnimation.Equals("walk_left"))
                     {
@@ -77,6 +80,7 @@ namespace Alex_s_unfortunate_journey
                 }
                 else if (etatClavier.IsKeyDown(Keys.D) == true)
                 { 
+                    //marche vers la droite
                     direction = new Vector2(1, 0);
                     if (!alex.etatAnimation.Equals("walk_right"))
                     {
@@ -87,13 +91,20 @@ namespace Alex_s_unfortunate_journey
                         alex.directionRight = true;
                     }
                 }
+                else if (etatClavier.IsKeyDown(Keys.Space) == true)
+                {
+                    //saute
+
+                }
                 else
                 {
+                    //ne marche plus
                     direction = Vector2.Zero;
                     if (!alex.etatAnimation.Equals("idle"))
                     {
                         if(alex.directionRight)
                         {
+                            //derniere marche a droite
                             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
                             alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
                             alex.PlayAnimation("idle");
@@ -101,6 +112,7 @@ namespace Alex_s_unfortunate_journey
                         }
                         else
                         {
+                            //derniere marche a gauche
                             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("MC_Idle_Left.sf", new JsonContentLoader());
                             alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
                             alex.PlayAnimation("idle_left");
@@ -110,7 +122,13 @@ namespace Alex_s_unfortunate_journey
                 }
                 alex.Movement(direction,deltaSeconds);
             }
-
+            // test
+            if (alex._positionAlex.X > 1190)
+            {
+                _myGame._niveauDepart.positionDepart.X = 20;
+                _myGame._screenManager.LoadScreen(_myGame._niveauForet);
+                
+            }
 
         }
         public override void Draw(GameTime gameTime)

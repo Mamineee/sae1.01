@@ -28,11 +28,11 @@ namespace Alex_s_unfortunate_journey
             }
         }
         private SpriteBatch _spriteBatch;
-        private readonly ScreenManager _screenManager;
+        public readonly ScreenManager _screenManager;
 
         //screen
-        private niveauDepart _niveauDepart;
-        private niveauForet _niveauForet;
+        public niveauDepart _niveauDepart;
+        public niveauForet _niveauForet;
         private Menu _menu;        
         //perso
         private Vector2 _positionPerso;
