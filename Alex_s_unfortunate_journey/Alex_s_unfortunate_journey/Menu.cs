@@ -38,6 +38,18 @@ namespace Alex_s_unfortunate_journey
         {
 
             MouseState _mouseState = Mouse.GetState();
+            if (lesBoutons[0].Contains(_mouseState.Position))
+            {
+                _imageMenu = Content.Load<Texture2D>("menu_play");
+            }
+            else if (lesBoutons[1].Contains(_mouseState.Position))
+            {
+                _imageMenu = Content.Load<Texture2D>("menu_quit");
+            }
+            else
+            {
+                _imageMenu = Content.Load<Texture2D>("menu");
+            }
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
                 for (int i = 0; i < lesBoutons.Length; i++)
