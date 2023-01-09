@@ -9,6 +9,8 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace Alex_s_unfortunate_journey
 {
@@ -53,6 +55,8 @@ namespace Alex_s_unfortunate_journey
                 this.etat = value;
             }
         }
+        //musique
+        private Song _musique;
         public Game1()
         {
             _screenManager = new ScreenManager();
@@ -82,6 +86,8 @@ namespace Alex_s_unfortunate_journey
             _niveauDepart = new niveauDepart(this);
             _niveauForet = new niveauForet(this);
             _menu = new Menu(this);
+            _musique = Content.Load<Song>("Alexs_Unfortunate_Journey_4.0");
+            MediaPlayer.Play(_musique);
             _screenManager.LoadScreen(_menu);
 
             // TODO: use this.Content to load your game content here
@@ -95,6 +101,7 @@ namespace Alex_s_unfortunate_journey
             KeyboardState keyboardState = Keyboard.GetState();
             // TODO: Add your update logic here
             //aler sur niveau foret
+            
             if (keyboardState.IsKeyDown(Keys.Left))
             {
                 _screenManager.LoadScreen(_niveauForet);
@@ -120,13 +127,14 @@ namespace Alex_s_unfortunate_journey
                 //si on appuie sur le bouton jouer -> commence le jeu
                 else if (this.Etat == Etats.Play && _menu.DejaJouer == false)
                 {
+                    //MediaPlayer.Play(_musique);
                     _screenManager.LoadScreen(_niveauDepart, new FadeTransition(GraphicsDevice, Color.Black));
                     _menu.DejaJouer = true;
                     _niveauDepart.MenuReouvert = false;
                 }
             }
-            //
-            if (keyboardState.IsKeyDown(Keys.Back)&& _niveauDepart.MenuReouvert == false)
+            
+            if (keyboardState.IsKeyDown(Keys.Escape)&& _niveauDepart.MenuReouvert == false)
             {
                 if (this.Etat == Etats.Menu)
                 {
@@ -135,6 +143,8 @@ namespace Alex_s_unfortunate_journey
                     _menu.DejaJouer = false;
                 }
             }
+            
+
             base.Update(gameTime);
         }
 

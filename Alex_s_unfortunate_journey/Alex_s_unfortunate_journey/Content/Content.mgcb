@@ -31,6 +31,12 @@
 /processorParam:TextureFormat=Color
 /build:../../../ressources_SAE1.01-02/menu/menu_play.png;menu_play.png
 
+#begin Alexs_Unfortunate_Journey_4.0.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Alexs_Unfortunate_Journey_4.0.mp3
+
 #begin GraveRobber_idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
