@@ -79,18 +79,6 @@
 /processorParam:TextureFormat=Color
 /build:MC_walk_left_2.png
 
-#begin menu_quit.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:menu_quit.png
-
 #begin menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -102,6 +90,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:menu.png
+
+#begin menu_quit.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:menu_quit.png
 
 #begin niveauDepart2.tmx
 /importer:TiledMapImporter
@@ -120,10 +120,10 @@
 /processorParam:TextureFormat=Color
 /build:niveauForet_scaled_12x_pngcrushed.png
 
-#begin niveauForet.tmx
+#begin niveauForet2.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
-/build:niveauForet.tmx
+/build:niveauForet2.tmx
 
 #begin tuiles_en_x6.png
 /importer:TextureImporter

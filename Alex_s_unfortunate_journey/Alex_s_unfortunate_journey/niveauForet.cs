@@ -33,7 +33,7 @@ namespace Alex_s_unfortunate_journey
         public override void LoadContent()
         {
             //map
-            _tiledMap = Content.Load<TiledMap>("niveauForet");
+            _tiledMap = Content.Load<TiledMap>("niveauForet2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
 
             //alex 
