@@ -133,8 +133,8 @@ namespace Alex_s_unfortunate_journey
                     _niveauDepart.MenuReouvert = false;
                 }
             }
-            //
-            if (keyboardState.IsKeyDown(Keys.Back)&& _niveauDepart.MenuReouvert == false)
+            
+            if (keyboardState.IsKeyDown(Keys.Escape)&& _niveauDepart.MenuReouvert == false)
             {
                 if (this.Etat == Etats.Menu)
                 {
