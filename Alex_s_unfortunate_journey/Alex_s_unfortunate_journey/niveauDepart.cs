@@ -72,14 +72,22 @@ namespace Alex_s_unfortunate_journey
             alex.Saut();
          // deplacement
             alex.Deplacement();
-         // teleportation
+         // teleportation 
              if (alex._positionAlex.X > 1190)
              {
                     _myGame._niveauDepart.positionDepart.X = 20;
                     _myGame._screenManager.LoadScreen(_myGame._niveauForet);
 
              }
-            alex.Movement(alex.direction, deltaSeconds);
+            //alex.Movement(alex.direction, deltaSeconds);
+
+
+         // mur ocean
+            if (alex._positionAlex.Y < 330)
+            {
+                
+            }
+
         }
 
 

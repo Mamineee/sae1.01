@@ -137,6 +137,7 @@ namespace Alex_s_unfortunate_journey
                     }
                 }
 
+                
                 //Movement(direction, deltaSeconds);
             }
         }
