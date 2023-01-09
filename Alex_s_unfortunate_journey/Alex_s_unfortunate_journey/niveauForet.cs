@@ -68,7 +68,7 @@ namespace Alex_s_unfortunate_journey
         public override void Update(GameTime gameTime)
         {
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+
             //menu
             if (Keyboard.GetState().IsKeyDown(Keys.Back))
                 _myGame.Etat = Game1.Etats.Menu;
@@ -76,64 +76,11 @@ namespace Alex_s_unfortunate_journey
             _tiledMapRenderer.Update(gameTime);
             //alex
             alex.UpdateAnim(deltaSeconds);
-            KeyboardState etatClavier = Keyboard.GetState();
-            if (alex.etat == Alex.Etats.Walk)
-            {
-                //Vector2 direction = Vector2.Zero;
-
-                if (etatClavier.IsKeyDown(Keys.Q) == true)
-                {
-                    //marche vers la gauche
-                    direction = new Vector2(-1, 0);
-                    if (!alex.etatAnimation.Equals("walk_left"))
-                    {
-                        SpriteSheet spriteSheetWalk = Content.Load<SpriteSheet>("MC_walk_left_2.sf", new JsonContentLoader());
-                        alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetWalk);
-                        alex.PlayAnimation("walk_left");
-                        alex.etatAnimation = "walk_left";
-                        alex.directionRight = false;
-                    }
-                }
-                else if (etatClavier.IsKeyDown(Keys.D) == true)
-                {
-                    //marche vers la droite
-                    direction = new Vector2(1, 0);
-                    if (!alex.etatAnimation.Equals("walk_right"))
-                    {
-                        SpriteSheet spriteSheetWalk = Content.Load<SpriteSheet>("GraveRobber_walk.sf", new JsonContentLoader());
-                        alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetWalk);
-                        alex.PlayAnimation("walk_right");
-                        alex.etatAnimation = "walk_right";
-                        alex.directionRight = true;
-                    }
-                }
-                else
-                {
-                    //ne marche plus
-                    direction = Vector2.Zero;
-                    if (!alex.etatAnimation.Equals("idle"))
-                    {
-                        if (alex.directionRight)
-                        {
-                            //derniere marche a droite
-                            SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
-                            alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
-                            alex.PlayAnimation("idle");
-                            alex.etatAnimation = "idle";
-                        }
-                        else
-                        {
-                            //derniere marche a gauche
-                            SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("MC_Idle_Left.sf", new JsonContentLoader());
-                            alex._animation = new MonoGame.Extended.Sprites.AnimatedSprite(spriteSheetIdle);
-                            alex.PlayAnimation("idle_left");
-                            alex.etatAnimation = "idle";
-                        }
-                    }
-                }
-                alex.Movement(direction, deltaSeconds);
-            }
-            // test
+            //saut
+            alex.Saut();
+            // deplacement
+            alex.Deplacement();
+            // teleportation
             if (alex._positionAlex.X < 2)
             {
                 _myGame._niveauDepart.positionDepart.X = 1160;
