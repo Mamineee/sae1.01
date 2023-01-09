@@ -20,10 +20,10 @@ namespace Alex_s_unfortunate_journey
         public String etatAnimation;
         public Boolean directionRight;
         const int _vitesse = 160;
-        const int _haut = -1;
-        const int _bas = 1;
-        const int _gauche = -1;
-        const int _droite = 1;
+        //const int _haut = -1;
+        //const int _bas = 1;
+        //const int _gauche = -1;
+        //const int _droite = 1;
 
         public enum Etats
         {
@@ -34,6 +34,9 @@ namespace Alex_s_unfortunate_journey
 
         Vector2 direction = Vector2.Zero;
         Vector2 vitesse = Vector2.Zero;
+        //saut
+        public Vector2 velocity;
+        public bool stateJump;
 
         KeyboardState ancienEtatClavier;
 
@@ -45,6 +48,8 @@ namespace Alex_s_unfortunate_journey
             _positionAlex = initialPos;
             etatAnimation = "idle";
             directionRight = true;
+            //saut
+            stateJump = true;
         }
 
         //public void Update(GameTime __gameTime, Vector2 __vitesse, Vector2 __direction)
@@ -76,62 +81,62 @@ namespace Alex_s_unfortunate_journey
             _positionAlex += _direction * _vitesse * deltaSecond;
         }
 
-        private void Deplacement(KeyboardState etatClavier)
-        {
-            if (etat == Etats.Walk)
-            {
-                vitesse = Vector2.Zero;
-                direction = Vector2.Zero;
+        //private void Deplacement(KeyboardState etatClavier)
+        //{
+        //    if (etat == Etats.Walk)
+        //    {
+        //        vitesse = Vector2.Zero;
+        //        direction = Vector2.Zero;
 
-                if (etatClavier.IsKeyDown(Keys.Q) == true)
-                {
-                    vitesse.X = _vitesse;
-                    direction.X = _gauche;
-                }
-                else if (etatClavier.IsKeyDown(Keys.D) == true)
-                {
-                    vitesse.X = _vitesse;
-                    direction.X = _droite;
-                }
-            }
-        }
+        //        if (etatClavier.IsKeyDown(Keys.Q) == true)
+        //        {
+        //            vitesse.X = _vitesse;
+        //            direction.X = _gauche;
+        //        }
+        //        else if (etatClavier.IsKeyDown(Keys.D) == true)
+        //        {
+        //            vitesse.X = _vitesse;
+        //            direction.X = _droite;
+        //        }
+        //    }
+        //}
 
-        private void UpdateJump(KeyboardState etatClavier)
-        {
-            if (etat == Etats.Walk)
-            {
-                if (etatClavier.IsKeyDown(Keys.Space) == true && ancienEtatClavier.IsKeyDown(Keys.Space) == false)
-                {
-                    Jump();
-                }
-            }
+        //private void UpdateJump(KeyboardState etatClavier)
+        //{
+        //    if (etat == Etats.Walk)
+        //    {
+        //        if (etatClavier.IsKeyDown(Keys.Space) == true && ancienEtatClavier.IsKeyDown(Keys.Space) == false)
+        //        {
+        //            Jump();
+        //        }
+        //    }
 
-            if (etat == Etats.Jump)
-            {
-                if (positionDepart.Y - _positionAlex.Y > 150)
-                {
-                    direction.Y = _bas;
-                }
+        //    if (etat == Etats.Jump)
+        //    {
+        //        if (positionDepart.Y - _positionAlex.Y > 150)
+        //        {
+        //            direction.Y = _bas;
+        //        }
 
-                if (_positionAlex.Y > positionDepart.Y)
-                {
-                    _positionAlex.Y = positionDepart.Y;
-                    etat = Etats.Walk;
-                    direction = Vector2.Zero;
-                }
-            }
-        }
+        //        if (_positionAlex.Y > positionDepart.Y)
+        //        {
+        //            _positionAlex.Y = positionDepart.Y;
+        //            etat = Etats.Walk;
+        //            direction = Vector2.Zero;
+        //        }
+        //    }
+        //}
 
-        private void Jump()
-        {
-            if (etat != Etats.Jump)
-            {
-                etat = Etats.Jump;
-                positionDepart = _positionAlex;
-                direction.Y = _haut;
-                vitesse = new Vector2(_vitesse, _vitesse);
-            }
-        }
+        //private void Jump()
+        //{
+        //    if (etat != Etats.Jump)
+        //    {
+        //        etat = Etats.Jump;
+        //        positionDepart = _positionAlex;
+        //        direction.Y = _haut;
+        //        vitesse = new Vector2(_vitesse, _vitesse);
+        //    }
+        //}
 
 
     }
