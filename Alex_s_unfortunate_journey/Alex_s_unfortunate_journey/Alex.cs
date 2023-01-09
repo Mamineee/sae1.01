@@ -32,13 +32,13 @@ namespace Alex_s_unfortunate_journey
         }
         public Etats etat = Etats.Walk;
 
-        Vector2 direction = Vector2.Zero;
-        Vector2 vitesse = Vector2.Zero;
+        //Vector2 direction = Vector2.Zero;
+        //Vector2 vitesse = Vector2.Zero;
         //saut
         public Vector2 velocity;
         public bool stateJump;
 
-        KeyboardState ancienEtatClavier;
+        //KeyboardState ancienEtatClavier;
 
         Vector2 positionDepart = Vector2.Zero;
 
