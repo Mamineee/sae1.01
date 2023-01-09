@@ -31,11 +31,6 @@
 /processorParam:TextureFormat=Color
 /build:../../../ressources_SAE1.01-02/menu/menu_play.png;menu_play.png
 
-#begin ../../../ressources_SAE1.01-02/niveauForet/niveauForet2.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:../../../ressources_SAE1.01-02/niveauForet/niveauForet2.tmx;niveauForet2.tmx
-
 #begin Alexs_Unfortunate_Journey_4.0.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -154,6 +149,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:niveauForet_scaled_12x_pngcrushed.png
+
+#begin niveauForet2.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:niveauForet2.tmx
 
 #begin tuiles_en_x6.png
 /importer:TextureImporter
