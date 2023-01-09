@@ -37,6 +37,30 @@
 /processorParam:Quality=Best
 /build:Alexs_Unfortunate_Journey_4.0.mp3
 
+#begin fils_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:fils_2.png
+
+#begin fils_2_scaled_8x_pngcrushed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:fils_2_scaled_8x_pngcrushed.png
+
 #begin GraveRobber_idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
