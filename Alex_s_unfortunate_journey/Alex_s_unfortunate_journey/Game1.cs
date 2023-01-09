@@ -43,6 +43,13 @@ namespace Alex_s_unfortunate_journey
         public enum Etats { Menu, Controls, Play, Quit };
         private Etats etat;
 
+        //animation
+        public SpriteSheet spriteSheetIdle;
+        public SpriteSheet spriteSheetWalkLeft;
+        public SpriteSheet spriteSheetWalk;
+        public SpriteSheet spriteSheetIdleLeft;
+
+
         public Etats Etat
         {
             get
@@ -91,6 +98,10 @@ namespace Alex_s_unfortunate_journey
             _screenManager.LoadScreen(_menu);
 
             // TODO: use this.Content to load your game content here
+            spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
+            spriteSheetWalkLeft = Content.Load<SpriteSheet>("MC_walk_left_2.sf", new JsonContentLoader());
+            spriteSheetWalk = Content.Load<SpriteSheet>("GraveRobber_walk.sf", new JsonContentLoader());
+            spriteSheetIdleLeft = Content.Load<SpriteSheet>("MC_Idle_Left.sf", new JsonContentLoader());
         }
 
         protected override void Update(GameTime gameTime)
