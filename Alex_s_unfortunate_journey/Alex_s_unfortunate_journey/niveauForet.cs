@@ -41,7 +41,7 @@ namespace Alex_s_unfortunate_journey
         public override void LoadContent()
         {
             //map
-            _tiledMap = Content.Load<TiledMap>("niveauForet");
+            _tiledMap = Content.Load<TiledMap>("niveauForet2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //collision
             mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Plateforme");
@@ -58,8 +58,8 @@ namespace Alex_s_unfortunate_journey
         public override void Initialize()
         {
             //alex rectangle
-            _recAlex = new Rectangle((int)alex._positionAlex.X, (int)alex._positionAlex.Y,96,96);
-            _posAlex = new Vector2(alex._positionAlex.X, alex._positionAlex.Y);
+            //_recAlex = new Rectangle((int)alex._positionAlex.X, (int)alex._positionAlex.Y,96,96);
+            //_posAlex = new Vector2(alex._positionAlex.X, alex._positionAlex.Y);
             //ficelle 
             _positionFicelle = new Vector2(70, 598);
             _recFicelle = new Rectangle(70, 598, 64, 64);
