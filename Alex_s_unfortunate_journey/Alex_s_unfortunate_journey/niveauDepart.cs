@@ -77,21 +77,21 @@ namespace Alex_s_unfortunate_journey
                     alex.velocity.Y = -5f;
                     alex.stateJump = true;
                 }
-                if (alex.stateJump == true)
+            if (alex.stateJump == true)
                 {
                     float i = 1;
                     alex.velocity.Y += 0.15f * i;
                 }
-                if (alex._positionAlex.Y + 66 >= 676)
+            if (alex._positionAlex.Y + 66 >= 676)
                 {
                     alex.stateJump = false;
                 }
-                if (alex.stateJump == false)
+            if (alex.stateJump == false)
                 {
                     alex.velocity.Y = 0f;
                 }
-
-                if (alex.etat == Alex.Etats.Walk)
+            // deplacement
+             if (alex.etat == Alex.Etats.Walk)
                 {
                     //Vector2 direction = Vector2.Zero;
 
@@ -153,13 +153,14 @@ namespace Alex_s_unfortunate_journey
 
                     alex.Movement(direction, deltaSeconds);
                 }
-                // teleportation
-                if (alex._positionAlex.X > 1190)
-                {
+
+             // teleportation
+             if (alex._positionAlex.X > 1190)
+             {
                     _myGame._niveauDepart.positionDepart.X = 20;
                     _myGame._screenManager.LoadScreen(_myGame._niveauForet);
 
-                }
+             }
             
         }
         public override void Draw(GameTime gameTime)
