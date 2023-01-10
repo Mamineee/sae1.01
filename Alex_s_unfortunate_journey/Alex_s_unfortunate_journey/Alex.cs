@@ -9,38 +9,37 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Sprites;
-using MonoGame.Extended.Serialization;
-using MonoGame.Extended.Content;
-
+using MonoGame.Extended.Tiled;
 
 namespace Alex_s_unfortunate_journey
 {
     public class Alex
     {
-        Game1 _myGame;
         public MonoGame.Extended.Sprites.AnimatedSprite _animation;
-        public Vector2 _positionAlex;
+        public static Vector2 _positionAlex = Vector2.Zero;
         public String etatAnimation;
         public Boolean directionRight;
+        ushort left;
+        ushort right;
         const int _vitesse = 160;
-        public Vector2 direction = Vector2.Zero;
-        KeyboardState etatClavier = Keyboard.GetState();
+        niveauForet Foret;
+        //map
 
-
-
+        private TiledMap _tiledMap;
+       
         public enum Etats
         {
             Walk,
             Jump
         }
         public Etats etat = Etats.Walk;
+        
 
-       
         //saut
         public Vector2 velocity;
         public bool stateJump;
 
-      
+        //KeyboardState ancienEtatClavier;
 
         Vector2 positionDepart = Vector2.Zero;
 
@@ -50,12 +49,9 @@ namespace Alex_s_unfortunate_journey
             _positionAlex = initialPos;
             etatAnimation = "idle";
             directionRight = true;
-           
             //saut
             stateJump = true;
         }
-
-        
 
         public void UpdateAnim(float deltasecond)
         {
@@ -67,86 +63,29 @@ namespace Alex_s_unfortunate_journey
             _animation.Play(nameAnim);
         }
 
-        public void Movement(Vector2 _direction,float deltaSecond)
-        {
-            _positionAlex += _direction * _vitesse * deltaSecond;
+        public bool IsCollision(ushort x, ushort y, TiledMap tiledMap)
+        {           
+            TiledMapTileLayer mapLayer = tiledMap.GetLayer<TiledMapTileLayer>("Plateforme");
+
+            // définition de tile qui peut être null (?)
+            TiledMapTile? tile;
+            if (mapLayer.TryGetTile(x, y, out tile) == false)
+                return false;
+            if (!tile.Value.IsBlank)
+                return true;
+            return false;
         }
 
-        
-
-        //deplacement
-        public void Deplacement()
-        {
-            if (etat == Alex.Etats.Walk)
+        public void Jump(TiledMap tiledMap)
+        {  
+            if(directionRight == true)
+                left = (ushort)((_positionAlex.X -15)/ tiledMap.TileWidth);
+            else
             {
-                //Vector2 direction = Vector2.Zero;
+                left = (ushort)((_positionAlex.X+15) / tiledMap.TileWidth);
 
-                if (etatClavier.IsKeyDown(Keys.Q) == true)
-                {
-                    //marche vers la gauche
-                    direction = new Vector2(-1, 0);
-                    if (!etatAnimation.Equals("walk_left"))
-                    {
-                        
-                        _animation = new MonoGame.Extended.Sprites.AnimatedSprite(_myGame.spriteSheetWalk);
-                        PlayAnimation("walk_left");
-                        etatAnimation = "walk_left";
-                        directionRight = false;
-                    }
-                }
-                else if (etatClavier.IsKeyDown(Keys.D) == true)
-                {
-                    //marche vers la droite
-                    direction = new Vector2(1, 0);
-                    if (!etatAnimation.Equals("walk_right"))
-                    {
-                        
-                        _animation = new MonoGame.Extended.Sprites.AnimatedSprite(_myGame.spriteSheetWalk);
-                        PlayAnimation("walk_right");
-                        etatAnimation = "walk_right";
-                        directionRight = true;
-                    }
-                }
-                else if (etatClavier.IsKeyDown(Keys.Space) == true)
-                {
-                    //saute
-
-                }
-                else
-                {
-                    //ne marche plus
-                    direction = Vector2.Zero;
-                    if (!etatAnimation.Equals("idle"))
-                    {
-                        if (directionRight)
-                        {
-                            //derniere marche a droite
-                            
-                            _animation = new MonoGame.Extended.Sprites.AnimatedSprite(_myGame.spriteSheetIdle);
-                            PlayAnimation("idle");
-                            etatAnimation = "idle";
-                        }
-                        else
-                        {
-                            //derniere marche a gauche
-                            
-                            _animation = new MonoGame.Extended.Sprites.AnimatedSprite(_myGame.spriteSheetIdle);
-                            PlayAnimation("idle_left");
-                            etatAnimation = "idle";
-                        }
-                    }
-                }
-
-                
-                //Movement(direction, deltaSeconds);
             }
-        }
-
-
-        //saut
-       public void Saut()
-        {
-            
+            ushort ty = (ushort)((_positionAlex.Y +50)/ tiledMap.TileHeight);
             _positionAlex += velocity;
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
@@ -167,10 +106,21 @@ namespace Alex_s_unfortunate_journey
                 stateJump = true;
             }
             if (stateJump == true)
-            {
+            {                
+                if (IsCollision(left, ty, tiledMap) && !Keyboard.GetState().IsKeyDown(Keys.Space)) {
+                    Console.WriteLine("oui");
+                    _positionAlex.Y -= velocity.Y;
+                    stateJump = false;
+                }
+                
                 float i = 1;
-                velocity.Y += 0.15f * i;
+                velocity.Y += 0.15f * i;                
             }
+            if (!IsCollision(left, ty, tiledMap) /*&& !IsCollision(right, ty, tiledMap)*/)
+            {
+                stateJump = true;
+            }
+            
             if (_positionAlex.Y + 66 >= 676)
             {
                 stateJump = false;
@@ -179,8 +129,45 @@ namespace Alex_s_unfortunate_journey
             {
                 velocity.Y = 0f;
             }
+            
         }
+        public void Jump()
+        {
+            _positionAlex += velocity;
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                velocity.X = 3f;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            {
+                velocity.X = -3f;
+            }
+            else
+            {
+                velocity.X = 0f;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) & stateJump == false)
+            {
+                _positionAlex.Y -= 10f;
+                velocity.Y = -5f;
+                stateJump = true;
+            }
+            if (stateJump == true)
+            {               
+                float i = 1;
+                velocity.Y += 0.15f * i;
+            }
+            
+            if (_positionAlex.Y + 66 >= 676)
+            {
+                stateJump = false;
+            }
+            if (stateJump == false)
+            {
+                velocity.Y = 0f;
+            }
 
+        }
 
     }
 }

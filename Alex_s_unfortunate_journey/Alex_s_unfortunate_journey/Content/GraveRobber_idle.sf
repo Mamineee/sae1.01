@@ -1,0 +1,14 @@
+{
+  "textureAtlas": {
+    "texture": "GraveRobber_idle.png",
+    "regionWidth": 96,
+    "regionHeight": 96
+  },
+  "cycles": {
+    "idle": {
+      "frames": [0,1,2,3],
+      "isLooping": false,
+      "frameDuration": 0.2
+    }
+  }
+}
