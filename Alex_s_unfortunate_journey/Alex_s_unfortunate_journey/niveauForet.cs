@@ -60,7 +60,7 @@ namespace Alex_s_unfortunate_journey
             //baton
             _textureBaton = Content.Load<Texture2D>("Baton_grand_scaled_8x_pngcrushed");
             //cannap
-            _textureCannap = Content.Load<Texture2D>("canneapeche");
+            _textureCannap = Content.Load<Texture2D>("cannapcase");
             //Idle
             SpriteSheet spriteSheetIdle = Content.Load<SpriteSheet>("GraveRobber_idle.sf", new JsonContentLoader());
             alex = new Alex(spriteSheetIdle, 2, positionDepart);
