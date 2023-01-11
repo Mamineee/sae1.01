@@ -91,6 +91,8 @@ namespace Alex_s_unfortunate_journey
             _niveauForet = new niveauForet(this);
             _menu = new Menu(this);
             _musique = Content.Load<Song>("Alexs_Unfortunate_Journey_4.0");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = (float)0.25;
             MediaPlayer.Play(_musique);
             _screenManager.LoadScreen(_menu);
 
