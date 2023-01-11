@@ -49,6 +49,12 @@
 /processorParam:TextureFormat=Color
 /build:Baton_grand_scaled_8x_pngcrushed.png
 
+#begin bruit_de_pas.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:bruit_de_pas.mp3
+
 #begin cannapcase.png
 /importer:TextureImporter
 /processor:TextureProcessor

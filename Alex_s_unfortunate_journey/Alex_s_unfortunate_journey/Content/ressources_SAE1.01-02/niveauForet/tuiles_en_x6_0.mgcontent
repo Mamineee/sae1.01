@@ -3,7 +3,11 @@
   <SourceFile>C:/Users/plomionn/source/repos/sae1.01/Alex_s_unfortunate_journey/Alex_s_unfortunate_journey/Content/../../../ressources_SAE1.01-02/niveauForet/tuiles_en_x6.png</SourceFile>
   <SourceTime>2023-01-11T07:45:14.2941724+01:00</SourceTime>
   <DestFile>C:/Users/plomionn/source/repos/sae1.01/Alex_s_unfortunate_journey/Alex_s_unfortunate_journey/Content/bin/DesktopGL/Content/../../../ressources_SAE1.01-02/niveauForet/tuiles_en_x6_0.xnb</DestFile>
+<<<<<<< HEAD
   <DestTime>2023-01-11T08:07:12.50236+01:00</DestTime>
+=======
+  <DestTime>2023-01-11T07:51:18.780456+01:00</DestTime>
+>>>>>>> e692e8b3ea4d1dd6a8ce11edc362ea113631a286
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
